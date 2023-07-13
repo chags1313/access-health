@@ -1,6 +1,5 @@
 flet
 pyinstaller>=5.7.0
-random
 openai
 SpeechRecognition
 opencv-python
