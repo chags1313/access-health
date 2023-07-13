@@ -2,7 +2,7 @@ flet==0.7.4
 pyinstaller>=5.7.0
 openai
 SpeechRecognition
-mediapipe==0.10.1
 opencv-python-headless==4.7.0.72
+mediapipe
 numpy
 pandas
