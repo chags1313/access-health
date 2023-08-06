@@ -14,7 +14,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('venv\\Lib\\site-packages\\mediapipe\\modules', 'mediapipe\\modules'),],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
