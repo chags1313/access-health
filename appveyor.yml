@@ -16,7 +16,7 @@ environment:
     - TOXENV: "py37"
       TOX_APPVEYOR_X64: 1
 install:
-- py -3.7 -m pip install mediapipe opencv-python flet pandas numpy
+- py -3.7 -m pip install mediapipe opencv-python flet pandas numpy pyinstaller
 
 
 build_script:
