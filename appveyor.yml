@@ -20,7 +20,7 @@ install:
 
 
 build_script:
-- py -m Pyinstaller main.py --onefile
+- python -m Pyinstaller --onefile main.py
 
 test: off
 
