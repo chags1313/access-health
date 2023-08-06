@@ -11,6 +11,7 @@ skip_branch_with_pr: true
 environment:
   GITHUB_TOKEN:
     secure: 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
+    matrix:
     # Python 3.7, 64-bit
     - TOXENV: "py37"
       TOX_APPVEYOR_X64: 1
