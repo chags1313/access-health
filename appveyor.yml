@@ -20,7 +20,7 @@ install:
 
 
 build_script:
-- py -3.7 -m PyInstaller --onefile main.py
+- py -3.7 -m PyInstaller --onefile main.spec
 
 test: off
 
