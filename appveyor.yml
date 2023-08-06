@@ -11,6 +11,7 @@ environment:
     secure: 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
 
 install:
+- pip install upgrade pip
 - pip install mediapipe
 - pip install -r requirements.txt
 
