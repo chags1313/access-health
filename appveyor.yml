@@ -20,7 +20,7 @@ install:
 
 
 build_script:
-- flet pack main.py --name counter  --product-name counter --product-version "1.2.3" --copyright "Copyright (c) 2022 YourCompany Inc."
+- py -m flet pack main.py --name counter  --product-name counter --product-version "1.2.3" --copyright "Copyright (c) 2022 YourCompany Inc."
 
 test: off
 
