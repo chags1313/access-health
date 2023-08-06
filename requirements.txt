@@ -1,4 +1,4 @@
-mediapipe
+mediapipe-silicon
 opencv-python-headless==4.7.0.72
 flet==0.7.4
 pyinstaller>=5.7.0
