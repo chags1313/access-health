@@ -14,7 +14,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('Python Path/Lib/site-packages/mediapipe/modules', 'mediapipe/modules')],
+    datas=[],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -51,4 +51,6 @@ exe = EXE(
 
 mediapipe_tree = Tree(get_mediapipe_path(), prefix='mediapipe', excludes=["*.pyc"])
 a.datas += mediapipe_tree
+print(a.datas)
 a.binaries = filter(lambda x: 'mediapipe' not in x[0], a.binaries)
+print(a.binaries)
