@@ -11,7 +11,9 @@ environment:
     secure: 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
 
 install:
+- pip install mediapipe
 - pip install -r requirements.txt
+
 
 build_script:
 - flet pack main.py --name counter  --product-name counter --product-version "1.2.3" --copyright "Copyright (c) 2022 YourCompany Inc."
