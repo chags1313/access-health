@@ -11,7 +11,7 @@ def get_mediapipe_path():
 
 
 a = Analysis(
-    ['mm.py'],
+    ['main.py'],
     pathex=[],
     binaries=[],
     datas=[],
