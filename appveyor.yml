@@ -4,20 +4,18 @@ image:
 - Ubuntu
 
 skip_branch_with_pr: true
-stack: python 3.7
+#stack: python 3.7
 
 
 
 environment:
   GITHUB_TOKEN:
     secure: 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
-    matrix:
-    - PYTHON: "C:\\Python37-x64"
-      PYTHON_VERSION: "3.7.0"
-      PYTHON_ARCH: "64"
-
+    # Python 3.7, 64-bit
+    - TOXENV: "py37"
+      TOX_APPVEYOR_X64: 1
 install:
-- pip install -r requirements.txt
+- py -3.7 -m pip install mediapipe opencv-python flet pandas numpy
 
 
 build_script:
