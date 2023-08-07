@@ -6,6 +6,16 @@ import mediapipe as mp
 import time
 import numpy as np
 import datetime
+import sys
+
+def get_mediapipe_path():
+    import mediapipe
+    mediapipe_path = mediapipe.__path__[0]
+    return mediapipe_path
+
+mediapipe_path = get_mediapipe_path()
+
+sys.path.append(mediapipe_path)
 
 def main(page: ft.Page):
     def stop_recording(e):
