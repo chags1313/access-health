@@ -16,7 +16,16 @@ environment:
     - TOXENV: "py37"
       TOX_APPVEYOR_X64: 1
 install:
-- py -3.7 -m pip install mediapipe opencv-python flet pandas numpy pyinstaller
+- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" (
+    py -3.7 -m pip install mediapipe opencv-python flet pandas numpy pyinstaller
+  )
+- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="macOS" (
+    pip install mediapipe opencv-python flet pandas numpy pyinstaller
+  )
+- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Ubuntu" (
+    pip install mediapipe opencv-python flet pandas numpy pyinstaller
+  )
+
 
 
 build_script:
