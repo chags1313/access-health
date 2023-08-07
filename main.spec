@@ -14,7 +14,7 @@ a = Analysis(
     ['main.py'],
     pathex=[],
     binaries=[],
-    datas=[('venv\\Lib\\site-packages\\mediapipe\\modules', 'mediapipe\\modules'),],
+    datas=[],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
@@ -25,11 +25,11 @@ a = Analysis(
     cipher=block_cipher,
     noarchive=False,
 )
-#mediapipe_tree = Tree(get_mediapipe_path(), prefix='mediapipe', excludes=["*.pyc"])
-#a.datas += mediapipe_tree
-#print(a.datas)
-#a.binaries = filter(lambda x: 'mediapipe' not in x[0], a.binaries)
-#print(a.binaries)
+mediapipe_tree = Tree(get_mediapipe_path(), prefix='mediapipe', excludes=["*.pyc"])
+a.datas += mediapipe_tree
+print(a.datas)
+a.binaries = filter(lambda x: 'mediapipe' not in x[0], a.binaries)
+print(a.binaries)
 
 pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 
