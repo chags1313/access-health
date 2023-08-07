@@ -19,7 +19,7 @@ install:
 #- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" (
 #    py -3.7 -m pip install mediapipe opencv-python flet pandas numpy pyinstaller
 #  )
-- python -3.7 -m pip install mediapipe opencv-python flet pandas numpy pyinstaller
+- python3 -m pip install mediapipe opencv-python flet pandas numpy pyinstaller
 #- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Ubuntu" (
 #    pip install mediapipe opencv-python flet pandas numpy pyinstaller
 #  )
