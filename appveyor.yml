@@ -28,7 +28,7 @@ install:
 
 
 build_script:
-- python -m PyInstaller main.spec
+- pyinstaller main.spec
 #- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" (
 #    py -3.7 -m PyInstaller main.spec 
 #  )
