@@ -28,15 +28,16 @@ install:
 
 
 build_script:
-- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" (
-    py -3.7 -m PyInstaller main.spec 
-  )
-- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="macOS" (
-    python -m PyInstaller main.spec
-  )
-- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Ubuntu" (
-    python -m PyInstaller main.spec
-  )
+- python -m PyInstaller main.spec
+#- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" (
+#    py -3.7 -m PyInstaller main.spec 
+#  )
+#- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="macOS" (
+  
+#  )
+#- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Ubuntu" (
+#    python -m PyInstaller main.spec
+#  )
 test: off
 
 # Publish artifacts to GitHub Releases on "tag" builds
