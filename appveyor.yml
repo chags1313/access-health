@@ -1,64 +1,82 @@
 image:
-  - Visual Studio 2019
-  - macOS
-  - Ubuntu
+- Visual Studio 2019
+- macOS
+- Ubuntu
 
 skip_branch_with_pr: true
 #stack: python 3.7
 
+
+
 environment:
   GITHUB_TOKEN:
     secure: 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
-  matrix:
+    matrix:
     # Python 3.7, 64-bit
     - TOXENV: "py37"
       TOX_APPVEYOR_X64: 1
-
 install:
-  - python3.7 -m pip install mediapipe opencv-python flet pandas numpy pyinstaller
+- py -3.7 -m pip install mediapipe opencv-python flet pandas numpy pyinstaller
 
-build_windows:
-  # Windows build task
-  image: Visual Studio 2019
-  environment:
-    TOXENV: "py37"
-    TOX_APPVEYOR_X64: 1
-  build_script:
-    - py -m PyInstaller main.spec
-  test: off
-  artifacts:
-    - path: dist\*.exe
-      name: counter-windows
 
-build_macos:
-  # macOS build task
-  image: macOS
-  environment:
-    TOXENV: "py37"
-  build_script:
-    - python3.7 -m PyInstaller main.spec
-  test: off
-  artifacts:
-    - path: dist/counter.app
-      name: counter-macos
-
-build_linux:
-  # Linux build task
-  image: Ubuntu
-  environment:
-    TOXENV: "py37"
-  build_script:
-    - python3.7 -m PyInstaller main.spec
-  test: off
-  artifacts:
-    - path: dist/counter
-      name: counter-linux
+build_script:
+- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Visual Studio 2019" (
+    py -3.7 -m PyInstaller main.spec 
+  )
+- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="macOS" (
+    python -m PyInstaller main.spec
+  )
+- IF "%APPVEYOR_BUILD_WORKER_IMAGE%"=="Ubuntu" (
+    python -m PyInstaller main.spec
+  )
+test: off
 
 # Publish artifacts to GitHub Releases on "tag" builds
 deploy:
   provider: GitHub
-  auth_token:
-    secure: $(GITHUB_TOKEN)
+  auth_token: $(GITHUB_TOKEN)
   on:
     APPVEYOR_REPO_TAG: true
 
+#
+#   Windows package
+# 
+for:
+-
+  matrix:
+    only:
+    - image: Visual Studio 2019
+
+  after_build:
+  - 7z a counter-windows.zip %CD%\dist\*.exe
+
+  artifacts:
+  - path: counter-windows.zip
+
+#
+#   macOS package
+# 
+-
+  matrix:
+    only:
+    - image: macOS
+
+  after_build:
+  - tar -czvf counter-macos.tar.gz -C dist counter.app
+
+  artifacts:
+  - path: counter-macos.tar.gz
+
+#
+#   Linux package
+# 
+-
+  matrix:
+    only:
+    - image: Ubuntu
+
+  after_build:
+  - tar -czvf counter-linux.tar.gz -C dist counter
+
+  artifacts:
+  - path: counter-linux.tar.gz
