@@ -20,7 +20,7 @@ install:
 
 
 build_script:
-- py -3.7 -m PyInstaller main.spec
+- py -3.7 -m PyInstaller main.spec --icon movision_icon_large.ico
 
 test: off
 
